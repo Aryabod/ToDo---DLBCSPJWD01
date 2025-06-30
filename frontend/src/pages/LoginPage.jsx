@@ -36,8 +36,8 @@ export default function LoginPage({ onLogin, onSwitchToSignup }) {
         <p className="text-sm text-gray-400">All of your tasks in one App!</p>
       </div>
 
-      <div className="bg-[#1b2738] text-white rounded-2xl shadow-xl px-6 py-6 w-full max-w-sm sm:max-w-md md:max-w-lg"> {/* Login/Sign in form */}
-        <h2 className="text-xl font-semibold mb-4 text-center">Sign In</h2>
+      <div className="bg-[#1b2738] text-white rounded-2xl shadow-xl px-6 py-6 w-full max-w-sm sm:max-w-md md:max-w-lg"> {/* Login in form */}
+        <h2 className="text-xl font-semibold mb-4 text-center">Login</h2>
         {/* Input fields for Email and Password */}
         <input
           type="email"
