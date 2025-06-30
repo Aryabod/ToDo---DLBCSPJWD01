@@ -1,4 +1,3 @@
-// src/pages/TaskPage.jsx
 import React, { useState } from "react";
 
 export default function TaskPage({ user, onLogout }) {
@@ -8,7 +7,7 @@ export default function TaskPage({ user, onLogout }) {
   const [editingId, setEditingId] = useState(null);
   const [editText, setEditText] = useState("");
 
-  const handleAdd = () => {
+  const handleAdd = () => { // Add Task 
     if (!task.trim()) return;
     setTasks((all) => [
       ...all,
@@ -17,32 +16,31 @@ export default function TaskPage({ user, onLogout }) {
     setTask("");
   };
 
-  const toggleComplete = (id) =>
+  const toggleComplete = (id) => // Complete Task 
     setTasks((all) =>
       all.map((t) => (t.id === id ? { ...t, completed: !t.completed } : t))
     );
 
-  const handleDelete = (id) =>
+  const handleDelete = (id) => // Delete Task 
     setTasks((all) => all.filter((t) => t.id !== id));
 
-  const startEdit = (t) => {
+  const startEdit = (t) => {  // Getting ready to edit task 
     setEditingId(t.id);
     setEditText(t.text);
   };
 
-  const saveEdit = () => {
+  const saveEdit = () => { // Saving edit function
     setTasks((all) =>
       all.map((t) => (t.id === editingId ? { ...t, text: editText } : t))
     );
-    setEditingId(null);
+    setEditingId(null); // Stop editing
     setEditText("");
   };
 
   const visible = showCompleted ? tasks : tasks.filter((t) => !t.completed);
 
   return (
-    <div className="flex flex-col min-h-screen bg-[#0e1624] text-white">
-      {/* HEADER */}
+    <div className="flex flex-col min-h-screen bg-[#0e1624] text-white"> {/* Title and Logo */}
       <header className="flex justify-between items-center px-6 py-4 max-w-2xl mx-auto w-full">
         <h1 className="text-3xl font-bold flex items-center gap-2">📝 ToDo</h1>
         <button
@@ -53,12 +51,10 @@ export default function TaskPage({ user, onLogout }) {
         </button>
       </header>
 
-      {/* MAIN CONTENT */}
-      <main className="flex-grow w-full max-w-2xl mx-auto px-6 py-8 space-y-8">
+      <main className="flex-grow w-full max-w-2xl mx-auto px-6 py-8 space-y-8"> {/* Welcome Message */}
         <h2 className="text-xl text-center">Hi {user.name}!</h2>
 
-        {/* ADD TASK BOX */}
-        <div className="bg-[#1b2738] p-6 rounded-2xl shadow-lg space-y-4">
+        <div className="bg-[#1b2738] p-6 rounded-2xl shadow-lg space-y-4"> {/* Add Task */}
           <h3 className="text-lg font-semibold">Add New Task</h3>
           <input
             type="text"
@@ -75,8 +71,7 @@ export default function TaskPage({ user, onLogout }) {
           </button>
         </div>
 
-        {/* TOGGLE COMPLETED */}
-        <div className="flex justify-center">
+        <div className="flex justify-center"> {/* Complete Task Filter */}
           <label className="flex items-center gap-2">
             <input
               type="checkbox"
@@ -88,8 +83,7 @@ export default function TaskPage({ user, onLogout }) {
           </label>
         </div>
 
-        {/* TASK LIST */}
-        <div className="bg-[#1b2738] p-6 rounded-2xl shadow-lg space-y-4">
+        <div className="bg-[#1b2738] p-6 rounded-2xl shadow-lg space-y-4"> {/* Task List */}
           <h3 className="text-lg font-semibold">
             My Tasks ({visible.length})
           </h3>
@@ -102,8 +96,8 @@ export default function TaskPage({ user, onLogout }) {
                 key={t.id}
                 className="flex justify-between items-center bg-gray-800 p-3 rounded"
               >
-                <div className="flex items-center gap-3 flex-1 min-w-0">
-                  <input
+                <div className="flex items-center gap-3 flex-1 min-w-0"> {/* Checkbox to mark task as complete */}
+                  <input 
                     type="checkbox"
                     checked={t.completed}
                     onChange={() => toggleComplete(t.id)}
@@ -132,7 +126,7 @@ export default function TaskPage({ user, onLogout }) {
                   )}
                 </div>
 
-                <div className="flex items-center gap-2 ml-4">
+                <div className="flex items-center gap-2 ml-4"> {/* Edit,Save,Delete buttons */}
                   {editingId === t.id ? (
                     <button
                       onClick={saveEdit}
