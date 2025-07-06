@@ -1,5 +1,8 @@
 # ToDo App
 
+![Screenshot of Task App](screenshots/ToDo Tasks.png)
+
+
 This is a simple ToDo list web application created for the **IU Project - Java and Web Development (DLBCSPJWD01)** course.
 
 ## ✅ Features
