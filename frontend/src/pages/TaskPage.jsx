@@ -7,35 +7,73 @@ export default function TaskPage({ user, onLogout }) {
   const [editingId, setEditingId] = useState(null);
   const [editText, setEditText] = useState("");
 
-  const handleAdd = () => { // Add Task 
-    if (!task.trim()) return;
-    setTasks((all) => [
-      ...all,
-      { id: Date.now(), text: task.trim(), completed: false },
-    ]);
-    setTask("");
+
+  const [error, setError] = useState(null); // Displaying API errors
+
+  const saveTasksToBackend = async (currentTasks) => {   // Function to save tasks to the backend 
+    try {
+      setError(null); 
+      const res = await fetch("http://localhost:3000/api/tasks", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ userId: user.id, tasks: currentTasks }), // Send userId and tasks to the backend
+      });
+
+      if (!res.ok) {
+        const errorData = await res.json();
+        setError(errorData.error || "Failed to save tasks.");
+        console.error("Backend save error:", errorData);
+      }
+    } catch (err) {
+      setError("Failed to connect to server to save tasks.");
+      console.error("Network error saving tasks:", err);
+    }
   };
 
-  const toggleComplete = (id) => // Complete Task 
-    setTasks((all) =>
-      all.map((t) => (t.id === id ? { ...t, completed: !t.completed } : t))
+
+  const handleAdd = async () => {  // Add task
+    if (!task.trim()) return;
+    const newTasks = [ 
+      ...tasks,
+      { id: Date.now(), text: task.trim(), completed: false },
+    ];
+    setTasks(newTasks); 
+    setTask("");
+    await saveTasksToBackend(newTasks); 
+  };
+
+  const toggleComplete = async (id) => { // Complete Task 
+    const updatedTasks = tasks.map((t) =>
+      t.id === id ? { ...t, completed: !t.completed } : t
     );
+    setTasks(updatedTasks); 
+    await saveTasksToBackend(updatedTasks); 
+  };
 
-  const handleDelete = (id) => // Delete Task 
-    setTasks((all) => all.filter((t) => t.id !== id));
 
-  const startEdit = (t) => {  // Getting ready to edit task 
+  const handleDelete = async (id) => { // Delete Task 
+    const updatedTasks = tasks.filter((t) => t.id !== id);
+    setTasks(updatedTasks); 
+    await saveTasksToBackend(updatedTasks); 
+  };
+
+  const startEdit = (t) => { // Getting ready to edit task
     setEditingId(t.id);
     setEditText(t.text);
   };
 
-  const saveEdit = () => { // Saving edit function
-    setTasks((all) =>
-      all.map((t) => (t.id === editingId ? { ...t, text: editText } : t))
+
+
+  const saveEdit = async () => { // Saving edit function
+    const updatedTasks = tasks.map((t) =>
+      t.id === editingId ? { ...t, text: editText.trim() } : t
     );
+    setTasks(updatedTasks); 
     setEditingId(null); // Stop editing
     setEditText("");
+    await saveTasksToBackend(updatedTasks); 
   };
+
 
   const visible = showCompleted ? tasks : tasks.filter((t) => !t.completed);
 

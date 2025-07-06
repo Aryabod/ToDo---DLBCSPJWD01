@@ -34,9 +34,12 @@ cd ToDo---DLBCSPJWD01
 npm install
 
 # Start the backend server
-npm run server
+cd backend
+node server.mjs
+
 
 # Start the frontend (in a separate terminal)
+cd frontend
 npm run dev
 
 
