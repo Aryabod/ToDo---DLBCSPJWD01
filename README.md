@@ -1,6 +1,6 @@
 # ToDo App
 
-![Screenshot of Task App](screenshots/ToDo Tasks.png)
+![ToDo App](https://github.com/Aryabod/ToDo---DLBCSPJWD01/blob/main/screenshots/ToDo%20Tasks.png)
 
 
 This is a simple ToDo list web application created for the **IU Project - Java and Web Development (DLBCSPJWD01)** course.
