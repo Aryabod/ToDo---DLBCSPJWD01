@@ -9,9 +9,8 @@ const port = 3000;
 app.use(cors());
 app.use(express.json());
 
-// Setup LowDB
 const adapter = new JSONFile("./db.json");
-const db = new Low(adapter, { users: [] }); // default data
+const db = new Low(adapter, { users: [] }); 
 await db.read();
 
 if (!db.data.users) {
@@ -19,7 +18,7 @@ if (!db.data.users) {
   await db.write();
 }
 
-// Signup route
+// Signup 
 app.post("/api/signup", async (req, res) => {
   const { name, email, password } = req.body;
   if (!name || !email || !password) {
@@ -38,7 +37,7 @@ app.post("/api/signup", async (req, res) => {
   res.json(newUser);
 });
 
-// ✅ Login route - now outside signup
+// Login 
 app.post("/api/login", async (req, res) => {
   const { email, password } = req.body;
 
@@ -50,7 +49,7 @@ app.post("/api/login", async (req, res) => {
   res.json(user);
 });
 
-// Tasks route
+// Tasks 
 app.post("/api/tasks", async (req, res) => {
   const { userId, tasks } = req.body;
 
@@ -62,7 +61,7 @@ app.post("/api/tasks", async (req, res) => {
   res.json({ success: true });
 });
 
-// Start server
+// Start server Message
 app.listen(port, () => {
   console.log(`✅ Server is running at http://localhost:${port}`);
 });
