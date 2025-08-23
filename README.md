@@ -29,7 +29,7 @@ This is a simple ToDo list web application created for the **IU Project - Java a
 
 1.  **Clone the repository**
     ```bash
-    git clone [https://github.com/Aryabod/ToDo---DLBCSPJWD01](https://github.com/Aryabod/ToDo---DLBCSPJWD01)
+    git clone https://github.com/Aryabod/ToDo---DLBCSPJWD01
     cd ToDo---DLBCSPJWD01
     ```
 
@@ -64,6 +64,7 @@ Your application should now be running:
 1. Navigate to the sign-up page.
 2. Enter a valid name, email, and password.
 3. Click the "Sign Up" button.
+
 **Expected:** User account is created, redirected to the login page.
 
 **Test Case 2: User cannot sign up with an existing email**
