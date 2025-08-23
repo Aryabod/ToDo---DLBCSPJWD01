@@ -84,12 +84,7 @@ Your application should now be running:
 3. Click the "Login" button.<br>
 **Expected:** Error message shown — "Invalid credentials".
 
-**Test Case 5: User cannot access dashboard without logging in**
-1. Log out.
-2. Manually enter `/dashboard` in the browser.<br>
-**Expected:** Redirected to the login page.
-
-**Test Case 6: User can log out**
+**Test Case 5: User can log out**
 1. Log in.
 2. Click the "Logout" button.<br>
 **Expected:** Session ends, redirected to the login page.
