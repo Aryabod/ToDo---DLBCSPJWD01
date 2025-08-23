@@ -2,12 +2,11 @@
 
 ![ToDo App](https://github.com/Aryabod/ToDo---DLBCSPJWD01/blob/main/screenshots/ToDo%20Tasks.png)
 
-
 This is a simple ToDo list web application created for the **IU Project - Java and Web Development (DLBCSPJWD01)** course.
 
 ## ✅ Features
 
-- User Sign Up & Login 
+- User Sign Up & Login
 - Add, Edit, Delete tasks
 - Mark tasks as complete/incomplete
 - Filter to show/hide completed tasks
@@ -15,7 +14,7 @@ This is a simple ToDo list web application created for the **IU Project - Java a
 
 ## 🧰 Tech Stack
 
-- **Frontend**: React.js + Tailwind CSS 
+- **Frontend**: React.js + Tailwind CSS
 - **Backend**: Express.js + Node.js
 - **Database**: JSON Database
 
@@ -28,30 +27,35 @@ This is a simple ToDo list web application created for the **IU Project - Java a
 
 ### Steps
 
-```bash
-# Clone the repository
-git clone https://github.com/Aryabod/ToDo---DLBCSPJWD01
-cd ToDo---DLBCSPJWD01
+1.  **Clone the repository**
+    ```bash
+    git clone [https://github.com/Aryabod/ToDo---DLBCSPJWD01](https://github.com/Aryabod/ToDo---DLBCSPJWD01)
+    cd ToDo---DLBCSPJWD01
+    ```
 
-# Install dependencies
-npm install
+2.  **Install dependencies**
+    ```bash
+    npm install
+    ```
 
-# Start the backend server
-cd backend
-node server.mjs
+3.  **Start the backend server**
+    ```bash
+    cd backend
+    node server.mjs
+    ```
 
+4.  **Start the frontend (in a separate terminal)**
+    ```bash
+    cd frontend
+    npm run dev
+    ```
 
-# Start the frontend (in a separate terminal)
-cd frontend
-npm run dev
+Your application should now be running:
+-   **Backend** runs at: `http://localhost:3000`
+-   **Frontend** runs at: `http://localhost:5173`
 
+---
 
-# Backend runs at: http://localhost:3000
-# Frontend runs at: http://localhost:5173
-
-
-
-```markdown
 ## ✅ Test Cases
 
 ### **User Authentication**
