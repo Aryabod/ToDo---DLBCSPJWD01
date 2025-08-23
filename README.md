@@ -49,6 +49,7 @@ npm run dev
 # Backend runs at: http://localhost:3000
 # Frontend runs at: http://localhost:5173
 
+bash`
 
 ## ✅ Test Cases
 
